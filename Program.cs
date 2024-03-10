@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => {
+	var todo = new ToDo(Guid.NewGuid(), "Criar testes automatizados", false);
+	return Results.Ok(todo);
+});
 
 app.Run();
